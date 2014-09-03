@@ -41,7 +41,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b1.setText("O");
-				x++;
+				check();
 				b1.setEnabled(false);
 			}
 		});
@@ -55,7 +55,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b2.setText("O");
-				x++;
+				check();
 				b2.setEnabled(false);
 			}
 		});
@@ -69,7 +69,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b3.setText("O");
-				x++;
+				check();
 				b3.setEnabled(false);
 			}
 		});
@@ -83,7 +83,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b4.setText("O");
-				x++;
+				check();
 				b4.setEnabled(false);
 			}
 		});
@@ -97,7 +97,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b5.setText("O");
-				x++;
+				check();
 				b5.setEnabled(false);
 			}
 		});
@@ -111,7 +111,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b6.setText("O");
-				x++;
+				check();
 				b6.setEnabled(false);
 			}
 		});
@@ -125,7 +125,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b7.setText("O");
-				x++;
+				check();
 				b7.setEnabled(false);
 			}
 		});
@@ -139,7 +139,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b8.setText("O");
-				x++;
+				check();
 				b8.setEnabled(false);
 			}
 		});
@@ -153,7 +153,7 @@ public class Board extends ActionBarActivity {
 				
 				else 
 					b9.setText("O");
-				x++;
+				check();
 				b9.setEnabled(false);
 			}
 		});
@@ -184,25 +184,41 @@ public class Board extends ActionBarActivity {
 	}
 	
 	private void check(){
-		if (b1.getText()==b2.getText()&& b1.getText()==b3.getText() && b1.getText()!="_")
+		x++;
+		if (b1.getText()==b2.getText()&& b1.getText()==b3.getText() )
 			wins((String)b1.getText());
-		if (b1.getText()==b4.getText()&& b1.getText()==b7.getText() && b1.getText()!="_")
+		if (b1.getText()==b4.getText()&& b1.getText()==b7.getText() )
 			wins((String)b1.getText());
-		if (b1.getText()==b5.getText()&& b1.getText()==b9.getText() && b1.getText()!="_")
+		if (b1.getText()==b5.getText()&& b1.getText()==b9.getText() )
 			wins((String)b1.getText());
-		if (b2.getText()==b5.getText()&& b2.getText()==b8.getText() && b2.getText()!="_")
+		if (b2.getText()==b5.getText()&& b2.getText()==b8.getText() )
 			wins((String)b2.getText());
-		if (b3.getText()==b5.getText()&& b3.getText()==b7.getText() && b3.getText()!="_")
+		if (b3.getText()==b5.getText()&& b3.getText()==b7.getText() )
 			wins((String)b3.getText());
-		if (b4.getText()==b5.getText()&& b4.getText()==b6.getText() && b4.getText()!="_")
+		if (b4.getText()==b5.getText()&& b4.getText()==b6.getText() )
 			wins((String)b4.getText());
-		if (b7.getText()==b8.getText()&& b7.getText()==b9.getText() && b7.getText()!="_")
+		if (b7.getText()==b8.getText()&& b7.getText()==b9.getText() )
 			wins((String)b7.getText());
 			
 	}
 	private void wins(String s){
-		mes.setText(s+ " wins");
+		if (s=="X" || s=="O"){
+			mes.setText(s+ " wins");
+			gameover();
+		}
 	}
+	private void gameover(){
+		b1.setEnabled(false);
+		b2.setEnabled(false);
+		b3.setEnabled(false);
+		b4.setEnabled(false);
+		b5.setEnabled(false);
+		b6.setEnabled(false);
+		b7.setEnabled(false);
+		b8.setEnabled(false);
+		b9.setEnabled(false);
+	}
+	
 	
 	
 }
