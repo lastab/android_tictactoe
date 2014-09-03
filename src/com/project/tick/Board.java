@@ -7,10 +7,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Board extends ActionBarActivity {
 	int x=0;
 	Button b1,b2,b3,b4,b5,b6,b7,b8,b9;
+	TextView mes;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class Board extends ActionBarActivity {
 		b7= (Button)findViewById(R.id.btn7);
 		b8= (Button)findViewById(R.id.btn8);
 		b9= (Button)findViewById(R.id.btn9);
+		mes= (TextView)findViewById(R.id.textView1);
 	
 		//add listeners
 		b1.setOnClickListener(new OnClickListener() {
@@ -178,6 +181,27 @@ public class Board extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void check(){
+		if (b1.getText()==b2.getText()&& b1.getText()==b3.getText() && b1.getText()!="_")
+			wins((String)b1.getText());
+		if (b1.getText()==b4.getText()&& b1.getText()==b7.getText() && b1.getText()!="_")
+			wins((String)b1.getText());
+		if (b1.getText()==b5.getText()&& b1.getText()==b9.getText() && b1.getText()!="_")
+			wins((String)b1.getText());
+		if (b2.getText()==b5.getText()&& b2.getText()==b8.getText() && b2.getText()!="_")
+			wins((String)b2.getText());
+		if (b3.getText()==b5.getText()&& b3.getText()==b7.getText() && b3.getText()!="_")
+			wins((String)b3.getText());
+		if (b4.getText()==b5.getText()&& b4.getText()==b6.getText() && b4.getText()!="_")
+			wins((String)b4.getText());
+		if (b7.getText()==b8.getText()&& b7.getText()==b9.getText() && b7.getText()!="_")
+			wins((String)b7.getText());
+			
+	}
+	private void wins(String s){
+		mes.setText(s+ " wins");
 	}
 	
 	
