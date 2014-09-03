@@ -96,6 +96,15 @@
         android:layout_below="@+id/btn7"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="47dp"
-        android:text="_" />
+        android:text="X&apos;s Turn" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="34dp"
+        android:layout_toLeftOf="@+id/btn9"
+        android:text="Reset Game" />
 
 </RelativeLayout>

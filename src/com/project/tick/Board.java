@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class Board extends ActionBarActivity {
 	int x=0;
-	Button b1,b2,b3,b4,b5,b6,b7,b8,b9;
+	Button b1,b2,b3,b4,b5,b6,b7,b8,b9,resetg;
 	TextView mes;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class Board extends ActionBarActivity {
 		b8= (Button)findViewById(R.id.btn8);
 		b9= (Button)findViewById(R.id.btn9);
 		mes= (TextView)findViewById(R.id.textView1);
+		resetg=(Button)findViewById(R.id.reset);
 	
 		//add listeners
 		b1.setOnClickListener(new OnClickListener() {
@@ -157,6 +158,32 @@ public class Board extends ActionBarActivity {
 				b9.setEnabled(false);
 			}
 		});
+		resetg.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				b1.setEnabled(true);
+				b2.setEnabled(true);
+				b3.setEnabled(true);
+				b4.setEnabled(true);
+				b5.setEnabled(true);
+				b6.setEnabled(true);
+				b7.setEnabled(true);
+				b8.setEnabled(true);
+				b9.setEnabled(true);
+				b1.setText("_");
+				b2.setText("_");
+				b3.setText("_");
+				b4.setText("_");
+				b5.setText("_");
+				b6.setText("_");
+				b7.setText("_");
+				b8.setText("_");
+				b9.setText("_");
+				mes.setText("____________");
+			}
+		});
 		
 	
 	}
@@ -184,21 +211,29 @@ public class Board extends ActionBarActivity {
 	}
 	
 	private void check(){
+		if (x%2==0)
+			mes.setText("O's Turn");
+		else 
+			mes.setText("X's Turn");
 		x++;
 		if (b1.getText()==b2.getText()&& b1.getText()==b3.getText() )
 			wins((String)b1.getText());
-		if (b1.getText()==b4.getText()&& b1.getText()==b7.getText() )
+		 if (b1.getText()==b4.getText()&& b1.getText()==b7.getText() )
 			wins((String)b1.getText());
-		if (b1.getText()==b5.getText()&& b1.getText()==b9.getText() )
+		 if (b1.getText()==b5.getText()&& b1.getText()==b9.getText() )
 			wins((String)b1.getText());
 		if (b2.getText()==b5.getText()&& b2.getText()==b8.getText() )
 			wins((String)b2.getText());
-		if (b3.getText()==b5.getText()&& b3.getText()==b7.getText() )
+		 if (b3.getText()==b6.getText()&& b3.getText()==b9.getText() )
+				wins((String)b3.getText());
+		 if (b3.getText()==b5.getText()&& b3.getText()==b7.getText() )
 			wins((String)b3.getText());
-		if (b4.getText()==b5.getText()&& b4.getText()==b6.getText() )
+		 if (b4.getText()==b5.getText()&& b4.getText()==b6.getText() )
 			wins((String)b4.getText());
-		if (b7.getText()==b8.getText()&& b7.getText()==b9.getText() )
+		 if (b7.getText()==b8.getText()&& b7.getText()==b9.getText() )
 			wins((String)b7.getText());
+		 //if (b1.isEnabled()==false && b2.isEnabled()==false && b3.isEnabled()==false && b4.isEnabled()==false && b5.isEnabled()==false && b6.isEnabled()==false && b7.isEnabled()==false && b8.isEnabled()==false && b9.isEnabled()==false )
+			//mes.setText("The game is a draw");
 			
 	}
 	private void wins(String s){
@@ -206,6 +241,8 @@ public class Board extends ActionBarActivity {
 			mes.setText(s+ " wins");
 			gameover();
 		}
+		
+			
 	}
 	private void gameover(){
 		b1.setEnabled(false);
